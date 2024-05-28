@@ -26,19 +26,19 @@ Further IO-Aero software documentation can be found under the following links.
 
 ### 1. Directories
 
-| Directory         | Content                                              |
-|-------------------|------------------------------------------------------|
-| .github/workflows | GitHub Action workflows.                             |
-| .vscode           | Visual Studio Code configuration files.              |
-| data              | Application data related files.                      |
-| dist              | Dynamic link library version of **IO-GAMES**. |
-| docs              | Documentation files.                                 |
-| examples          | Scripts for examples and special tests.              |
-| iogames     | Python script files.                                 |
-| libs              | Contains libraries that are not used via pip.        |
-| resources         | Selected manuals and software.                       |
-| scripts           | Scripts supporting macOS, Ubuntu and Windows.        |
-| tests             | Scripts and data for examples and tests.             |
+| Directory         | Content                                         |
+|-------------------|-------------------------------------------------|
+| .github/workflows | GitHub Action workflows.                        |
+| .vscode           | Visual Studio Code configuration files.         |
+| data              | Application data related files.                 |
+| dist              | Dynamic link library version of **IO-GAMES**.   |
+| docs              | Documentation files.                            |
+| examples          | Scripts for examples and special tests.         |
+| iogames           | Python script files.                            |
+| libs              | Contains libraries that are not used via pip.   |
+| resources         | Selected manuals and software.                  |
+| scripts           | Scripts supporting macOS, Ubuntu and Windows.   |
+| tests             | Scripts and data for examples and tests.        |
 
 ### 2. Files
 
@@ -58,11 +58,11 @@ Further IO-Aero software documentation can be found under the following links.
 | Makefile                        | Tasks to be executed with the make command.                           |
 | pyproject.toml                  | Optional configuration data for the software quality tools.           |
 | README.md                       | This file.                                                            |
-| run_io_games             | Main script for using the functionality based on a Nuitka executable. |
-| run_io_games_dev         | Main script for using the functionality in a development environment. |
-| run_io_games_prod        | Main script for using the functionality in a productive environment.  |
-| run_io_games_pytest      | Main script for using the functionality in a test environment.        |
-| run_iogames               | Main script for using the functionality based on a Docker executable. |
+| run_io_games                    | Main script for using the functionality based on a Nuitka executable. |
+| run_io_games_dev                | Main script for using the functionality in a development environment. |
+| run_io_games_prod               | Main script for using the functionality in a productive environment.  |
+| run_io_games_pytest             | Main script for using the functionality in a test environment.        |
+| run_iogames                     | Main script for using the functionality based on a Docker executable. |
 | settings.io_aero.toml           | Configuration data.                                                   |
 | setup.cfg                       | Configuration data.                                                   |
 
