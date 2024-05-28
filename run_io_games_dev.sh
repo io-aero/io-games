@@ -1,10 +1,10 @@
-#!/bin/zsh
+#!/bin/bash
 
 set -e
 
 # ------------------------------------------------------------------------------
 #
-# run_io_template_app_dev.zsh: Process IO-TEMPLATE-APP tasks.
+# run_io_games_dev.sh: Process IO-GAMES tasks.
 #
 # ------------------------------------------------------------------------------
 
@@ -15,18 +15,23 @@ export IO_AERO_TASK_DEFAULT=version
 
 export PYTHONPATH=.
 
-if [[ -z "$1" ]]; then
+if [ -z "$1" ]; then
     echo "==================================================================="
-    echo "version - Show the IO-TEMPLATE-APP version"
+    echo "version - Show the IO-GAMES version"
     echo "-------------------------------------------------------------------"
-    vared -p "Enter the desired task [default: ${IO_AERO_TASK_DEFAULT}] " -c IO_AERO_TASK
-    export IO_AERO_TASK=${IO_AERO_TASK:-${IO_AERO_TASK_DEFAULT}}
+    # shellcheck disable=SC2162
+    read -p "Enter the desired task [default: ${IO_AERO_TASK_DEFAULT}] " IO_AERO_TASK
+    export IO_AERO_TASK=${IO_AERO_TASK}
+
+    if [ -z "${IO_AERO_TASK}" ]; then
+        export IO_AERO_TASK=${IO_AERO_TASK_DEFAULT}
+    fi
 else
     export IO_AERO_TASK=$1
 fi
 
 # Path to the log file
-log_file="run_io_template_app_dev_${IO_AERO_TASK}.log"
+log_file="run_io_games_dev_${IO_AERO_TASK}.log"
 
 # Function for logging messages
 log_message() {
@@ -53,29 +58,34 @@ exec > >(while read -r line; do log_message "$line"; done) 2> >(while read -r li
 echo "======================================================================="
 echo "Start $0"
 echo "-----------------------------------------------------------------------"
-echo "IO_TEMPLATE-APP - Template for Application Repositories."
+echo "IO_GAMES - Template for Application Repositories."
 echo "-----------------------------------------------------------------------"
-echo "ENV_FOR_DYNACONF : ${ENV_FOR_DYNACONF}"
-echo "PYTHONPATH       : ${PYTHONPATH}"
+echo "ENV_FOR_DYNACONF         : ${ENV_FOR_DYNACONF}"
+echo "PYTHONPATH               : ${PYTHONPATH}"
 echo "-----------------------------------------------------------------------"
-echo "TASK             : ${IO_AERO_TASK}"
+echo "TASK                     : ${IO_AERO_TASK}"
 echo "-----------------------------------------------------------------------"
 date +"DATE TIME : %d.%m.%Y %H:%M:%S"
 echo "======================================================================="
+
+
+# ---------------------------------------------------------------------------
+# version: Show the IO-GAMES version
+# ---------------------------------------------------------------------------
 # Task handling
 # ---------------------------------------------------------------------------
-case "${IO_AERO_TASK}" in
-    "version")
-	    if ! ( python scripts/launcher.py -t "${IO_AERO_TASK}" ); then
-            exit 255
-        fi
-        ;;
-
-    *)
-        echo "Processing of the script run_io_template_app_dev is aborted: unknown task='${IO_AERO_TASK}'"
+if [[ "${IO_AERO_TASK}" =~ ^(version)$ ]]; then
+    if ! ( python scripts/launcher.py -t "${IO_AERO_TASK}" ); then
         exit 255
-        ;;
-esac
+    fi
+
+# ---------------------------------------------------------------------------
+# Program abort due to wrong input.
+# ---------------------------------------------------------------------------
+else
+    echo "Processing of the script run_io_games_dev is aborted: unknown task='${IO_AERO_TASK}'"
+    exit 255
+fi
 
 echo "-----------------------------------------------------------------------"
 date +"DATE TIME : %d.%m.%Y %H:%M:%S"

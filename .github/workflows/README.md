@@ -1,4 +1,4 @@
-# IO-TEMPLATE-APP - File Directory **`.github/workflows`**
+# IO-GAMES - File Directory **`.github/workflows`**
 
 This directory contains the following GitHub Action workflows:
 

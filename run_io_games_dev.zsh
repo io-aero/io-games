@@ -1,37 +1,32 @@
-#!/bin/bash
+#!/bin/zsh
 
 set -e
 
 # ------------------------------------------------------------------------------
 #
-# run_io_template_app_prod.sh: Process IO-TEMPLATE-APP tasks.
+# run_io_games_dev.zsh: Process IO-GAMES tasks.
 #
 # ------------------------------------------------------------------------------
 
-export ENV_FOR_DYNACONF=prod
+export ENV_FOR_DYNACONF=dev
 
 export IO_AERO_TASK=
 export IO_AERO_TASK_DEFAULT=version
 
 export PYTHONPATH=.
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
     echo "==================================================================="
-    echo "version - Show the IO-TEMPLATE-APP version"
+    echo "version - Show the IO-GAMES version"
     echo "-------------------------------------------------------------------"
-    # shellcheck disable=SC2162
-    read -p "Enter the desired task [default: ${IO_AERO_TASK_DEFAULT}] " IO_AERO_TASK
-    export IO_AERO_TASK=${IO_AERO_TASK}
-
-    if [ -z "${IO_AERO_TASK}" ]; then
-        export IO_AERO_TASK=${IO_AERO_TASK_DEFAULT}
-    fi
+    vared -p "Enter the desired task [default: ${IO_AERO_TASK_DEFAULT}] " -c IO_AERO_TASK
+    export IO_AERO_TASK=${IO_AERO_TASK:-${IO_AERO_TASK_DEFAULT}}
 else
     export IO_AERO_TASK=$1
 fi
 
 # Path to the log file
-log_file="run_io_template_app_prod_${IO_AERO_TASK}.log"
+log_file="run_io_games_dev_${IO_AERO_TASK}.log"
 
 # Function for logging messages
 log_message() {
@@ -53,38 +48,34 @@ if [ -f "${log_file}" ]; then
 fi
 
 # Redirection of the standard output and the standard error output to the log file
-# exec > >(while read -r line; do log_message "$line"; done) 2> >(while read -r line; do log_message "ERROR: $line"; done)
+exec > >(while read -r line; do log_message "$line"; done) 2> >(while read -r line; do log_message "ERROR: $line"; done)
 
 echo "======================================================================="
 echo "Start $0"
 echo "-----------------------------------------------------------------------"
-echo "IO_TEMPLATE_APP - Template for Application Repositories."
+echo "IO_GAMES - Template for Application Repositories."
 echo "-----------------------------------------------------------------------"
-echo "ENV_FOR_DYNACONF         : ${ENV_FOR_DYNACONF}"
-echo "PYTHONPATH               : ${PYTHONPATH}"
+echo "ENV_FOR_DYNACONF : ${ENV_FOR_DYNACONF}"
+echo "PYTHONPATH       : ${PYTHONPATH}"
 echo "-----------------------------------------------------------------------"
-echo "TASK                     : ${IO_AERO_TASK}"
+echo "TASK             : ${IO_AERO_TASK}"
 echo "-----------------------------------------------------------------------"
 date +"DATE TIME : %d.%m.%Y %H:%M:%S"
 echo "======================================================================="
-
-# ---------------------------------------------------------------------------
-# version: Show the IO-TEMPLATE-APP version
-# ---------------------------------------------------------------------------
 # Task handling
 # ---------------------------------------------------------------------------
-if [[ "${IO_AERO_TASK}" =~ ^(version)$ ]]; then
-    if ! ( ./dist/linux/iotemplateapp -t "${IO_AERO_TASK}" ); then
-        exit 255
-    fi
+case "${IO_AERO_TASK}" in
+    "version")
+	    if ! ( python scripts/launcher.py -t "${IO_AERO_TASK}" ); then
+            exit 255
+        fi
+        ;;
 
-# ---------------------------------------------------------------------------
-# Program abort due to wrong input.
-# ---------------------------------------------------------------------------
-else
-    echo "Processing of the script run_io_template_app_prod is aborted: unknown task='${IO_AERO_TASK}'"
-    exit 255
-fi
+    *)
+        echo "Processing of the script run_io_games_dev is aborted: unknown task='${IO_AERO_TASK}'"
+        exit 255
+        ;;
+esac
 
 echo "-----------------------------------------------------------------------"
 date +"DATE TIME : %d.%m.%Y %H:%M:%S"
@@ -93,7 +84,7 @@ echo "End   $0"
 echo "======================================================================="
 
 # Close the log file
-# exec > >(while read -r line; do echo "$line"; done) 2> >(while read -r line; do echo "ERROR: $line"; done)
+exec > >(while read -r line; do echo "$line"; done) 2> >(while read -r line; do echo "ERROR: $line"; done)
 
 # Closing the log file
 log_message "Script finished."

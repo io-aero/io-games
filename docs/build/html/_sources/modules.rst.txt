@@ -1,7 +1,7 @@
-iotemplateapp
+iogames
 =============
 
 .. toctree::
    :maxdepth: 4
 
-   iotemplateapp
+   iogames

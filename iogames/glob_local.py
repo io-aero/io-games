@@ -48,7 +48,7 @@ INFORMATION_NOT_YET_AVAILABLE = "n/a"
 """str: Placeholder indicating that information is not yet available."""
 
 # Library version number.
-IO_TEMPLATE_APP_VERSION = "9.9.9"
+IO_GAMES_VERSION = "9.9.9"
 """str: The current version number of the IO-Aero template application."""
 
 LOCALE = "en_US.UTF-8"

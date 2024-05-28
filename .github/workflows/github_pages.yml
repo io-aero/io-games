@@ -5,7 +5,7 @@ on:
     branches: [ 'main' ]
 
 env:
-  MODULE: 'iotemplateapp'
+  MODULE: 'iogames'
   PYPI_PAT: ${{ secrets.PYPI_PAT }}
 
 jobs:

@@ -9,7 +9,7 @@ env:
   IO_COVERALLS: 'false'
   IO_DOCKER: 'false'
   IO_ODBC: 'false'
-  MODULE: 'iotemplateapp'
+  MODULE: 'iogames'
   PYPI_PAT: ${{ secrets.PYPI_PAT }}
 
 jobs:

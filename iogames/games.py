@@ -1,7 +1,7 @@
 # Copyright (c) 2022-2024 IO-Aero. All rights reserved. Use of this
 # source code is governed by the IO-Aero License, that can
 # be found in the LICENSE.md file.
-"""IO-TEMPLATE-APP interface."""
+"""IO-GAMES interface."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import logging
 
 from iocommon import io_glob, io_settings, io_utils
 
-from iotemplateapp import glob_local
+from iogames import glob_local
 
 # -----------------------------------------------------------------------------
 # Global variables.
@@ -27,7 +27,6 @@ def check_arg_task(args: argparse.Namespace) -> None:
     """Check the command line argument: -t / --task.
 
     Args:
-    ----
         args (argparse.Namespace): Command line arguments.
 
     """
@@ -112,7 +111,6 @@ def progress_msg(msg: str) -> None:
     """Create a progress message.
 
     Args:
-    ----
         msg (str): Progress message.
 
     """
@@ -127,7 +125,6 @@ def progress_msg_time_elapsed(duration: int, event: str) -> None:
     """Create a time elapsed message.
 
     Args:
-    ----
         duration (int): Time elapsed in ns.
         event (str): Event description.
 
@@ -142,7 +139,6 @@ def terminate_fatal(error_msg: str) -> None:
     """Terminate the application immediately.
 
     Args:
-    ----
         error_msg (str): Error message.
 
     """
@@ -160,4 +156,4 @@ def version() -> str:
         str: The version number of the IO-XPA-DATA application.
 
     """
-    return glob_local.IO_TEMPLATE_APP_VERSION
+    return glob_local.IO_GAMES_VERSION

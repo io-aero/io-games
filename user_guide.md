@@ -1,6 +1,6 @@
-# User guide for the repository `IO-TEMPLATE-APP`
+# User guide for the repository `IO-GAMES`
 
-`IO-TEMPLATE-APP` is a template repository for creating Python applications. 
+`IO-GAMES` is a template repository for creating Python applications. 
 This document describes how to use this repository to create a new repository. 
 In the following instructions, we assume that the new repository should be named `my-app` and the application to be created with it should be named `myapp`.
 
@@ -28,9 +28,9 @@ As described [here](https://docs.github.com/en/repositories/creating-and-managin
 
 | Old name                  | New name         |
 |:--------------------------|:-----------------|
-| `iotemplateapp`           | `myapp`        |
-| `run_io_template_app.bat` | `run_my_app.bat` |
-| `run_io_template_app.sh`  | `run_my_app.sh`  |
+| `iogames`           | `myapp`        |
+| `run_io_games.bat` | `run_my_app.bat` |
+| `run_io_games.sh`  | `run_my_app.sh`  |
 
 ### 5. Replacing texts in the new repository `my-app`
 
@@ -38,11 +38,11 @@ It is absolutely necessary to respect the capitalization!
 
 | Old text           | New text   |
 |:-------------------|:-----------|
-| `IO-TEMPLATE-APP`  | `MY-APP`  |
-| `IO_TEMPLATE_APP`  | `MY_APP`  |
-| `io-template-app`  | `my-app`  |
-| `io_template_app`  | `my_app`  |
-| `iotemplateapp`    | `myapp`   |
+| `IO-GAMES`  | `MY-APP`  |
+| `IO_GAMES`  | `MY_APP`  |
+| `io-games`  | `my-app`  |
+| `io_games`  | `my_app`  |
+| `iogames`    | `myapp`   |
 
 ### 6. Test the current state of the new application
 

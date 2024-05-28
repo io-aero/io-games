@@ -1,21 +1,21 @@
-iotemplateapp package
+iogames package
 =====================
 
 Submodules
 ----------
 
-iotemplateapp.glob\_local module
+iogames.glob\_local module
 --------------------------------
 
-.. automodule:: iotemplateapp.glob_local
+.. automodule:: iogames.glob_local
    :members:
    :undoc-members:
    :show-inheritance:
 
-iotemplateapp.templateapp module
+iogames.games module
 --------------------------------
 
-.. automodule:: iotemplateapp.templateapp
+.. automodule:: iogames.games
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ iotemplateapp.templateapp module
 Module contents
 ---------------
 
-.. automodule:: iotemplateapp
+.. automodule:: iogames
    :members:
    :undoc-members:
    :show-inheritance:

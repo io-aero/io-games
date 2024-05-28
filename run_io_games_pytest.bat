@@ -2,7 +2,7 @@
 
 rem ----------------------------------------------------------------------------
 rem
-rem run_io_template_app_pytest.bat: Process IO-TEMPLATE-APP tasks.
+rem run_io_games_pytest.bat: Process IO-GAMES tasks.
 rem
 rem ----------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ set PYTHONPATH=.
 
 if ["%1"] EQU [""] (
     echo =======================================================================
-    echo version - Show the IO-TEMPLATE-APP version
+    echo version - Show the IO-GAMES version
     echo -----------------------------------------------------------------------
     set /P IO_AERO_TASK="Enter the desired task [default: %IO_AERO_TASK_DEFAULT%] "
 
@@ -33,9 +33,9 @@ echo.
 echo Script %0 is now running
 echo.
 
-set IO_AERO_TEMPLATE_APP_LOG=run_io_template_app_pytest_%IO_AERO_TASK%.log
+set IO_AERO_GAMES_LOG=run_io_games_pytest_%IO_AERO_TASK%.log
 
-echo You can find the run log in the file %IO_AERO_TEMPLATE_APP_LOG%
+echo You can find the run log in the file %IO_AERO_GAMES_LOG%
 echo.
 echo Please wait ...
 echo.
@@ -45,17 +45,17 @@ if exist logging_io_aero.log (
     del /f /q logging_io_aero.log
 )
 
-rem Check if the file specified in IO_AERO_TEMPLATE_APP_LOG exists and delete it
-if exist %IO_AERO_TEMPLATE_APP_LOG% (
-    del /f /q %IO_AERO_TEMPLATE_APP_LOG%
+rem Check if the file specified in IO_AERO_GAMES_LOG exists and delete it
+if exist %IO_AERO_GAMES_LOG% (
+    del /f /q %IO_AERO_GAMES_LOG%
 )
 
-> %IO_AERO_TEMPLATE_APP_LOG% 2>&1 (
+> %IO_AERO_GAMES_LOG% 2>&1 (
 
     echo ===========================================================================
     echo Start %0
     echo ---------------------------------------------------------------------------
-    echo IO_TEMPLATE_APP - Template for Application Repositories.
+    echo IO_GAMES - Template for Application Repositories.
     echo ---------------------------------------------------------------------------
     echo ENV_FOR_DYNACONF         : %ENV_FOR_DYNACONF%
     echo PYTHONPATH               : %PYTHONPATH%
@@ -66,12 +66,12 @@ if exist %IO_AERO_TEMPLATE_APP_LOG% (
     echo ===========================================================================
 
     rem ----------------------------------------------------------------------------
-    rem Show the IO_TEMPLATE_APP version.
+    rem Show the IO_GAMES version.
     rem ----------------------------------------------------------------------------
     if /I ["%IO_AERO_TASK%"] EQU ["version"] (
         python scripts\launcher.py -t "%IO_AERO_TASK%"
         if ERRORLEVEL 1 (
-            echo Processing of the script run_io_template_app_pytest was aborted
+            echo Processing of the script run_io_games_pytest was aborted
             exit 1
         )
 
@@ -83,7 +83,7 @@ rem ----------------------------------------------------------------------------
 rem Program abort due to wrong input.
 rem ----------------------------------------------------------------------------
 
-echo Processing of the script run_io_template_app_pytest is aborted: unknown task='%IO_AERO_TASK%'
+echo Processing of the script run_io_games_pytest is aborted: unknown task='%IO_AERO_TASK%'
 exit 1
 
 :END_OF_SCRIPT

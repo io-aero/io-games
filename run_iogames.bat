@@ -2,7 +2,7 @@
 
 rem -------------------------------------------------------------------------
 rem
-rem run_iotemplateapp.bat: Process IO-TEMPLATE-APP tasks.
+rem run_iogames.bat: Process IO-GAMES tasks.
 rem
 rem -------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ setlocal EnableDelayedExpansion
 set ERRORLEVEL=
 
 echo ========================================================================
-echo iotemplateapp - Template for Application Repositories.
+echo iogames - Template for Application Repositories.
 echo ------------------------------------------------------------------------
 echo CURRENT DIRECTORY: %CD%
 echo ------------------------------------------------------------------------
@@ -20,7 +20,7 @@ echo ------------------------------------------------------------------------
 date /T & time /T
 echo ========================================================================
 
-iotemplateapp.exe
+iogames.exe
 
 echo ------------------------------------------------------------------------
 date /T & time /T

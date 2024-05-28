@@ -8,8 +8,8 @@ from pathlib import Path
 from rinoh.frontend.rst import DocutilsInlineNode  # type: ignore
 
 EXCLUDE_FROM_PDF: list[str] = []
-MODULE_NAME = "iotemplateapp"
-REPOSITORY_NAME = "io-template-app"
+MODULE_NAME = "iogames"
+REPOSITORY_NAME = "io-games"
 REPOSITORY_TITLE = "Template for Application Repositories"
 
 # Debug: Print the current working directory and sys.path

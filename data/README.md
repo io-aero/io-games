@@ -1,3 +1,3 @@
-# IO-TEMPLATE-APP - File Directory **`data`**
+# IO-GAMES - File Directory **`data`**
 
 This directory contains all data related files.

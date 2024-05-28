@@ -1,9 +1,9 @@
 {
     "terminal.integrated.env.linux": {
-        "PYTHONPATH": "iotemplateapp"
+        "PYTHONPATH": "iogames"
     },
     "python.analysis.extraPaths": [
-        "iotemplateapp"
+        "iogames"
     ],
     [
   "python"

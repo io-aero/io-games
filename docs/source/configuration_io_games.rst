@@ -1,5 +1,5 @@
 =============================
-Configuration IO-TEMPLATE-APP
+Configuration IO-GAMES
 =============================
 
 .act_secrets

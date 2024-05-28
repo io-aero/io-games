@@ -2,7 +2,7 @@ import argparse
 
 from _typeshed import Incomplete
 
-from iotemplateapp import glob_local as glob_local
+from iogames import glob_local as glob_local
 
 ARG_TASK: str
 logger: Incomplete

@@ -5,7 +5,7 @@
 # Activate the conda environment
 # -----------------------------------------------------------------------------
 source /opt/conda/etc/profile.d/conda.sh
-conda activate iotemplateapp
+conda activate iogames
 
 # -----------------------------------------------------------------------------
 # Execute the provided command

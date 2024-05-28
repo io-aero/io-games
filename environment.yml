@@ -1,4 +1,4 @@
-name: iotemplateapp
+name: iogames
 channels:
   - conda-forge
 dependencies:

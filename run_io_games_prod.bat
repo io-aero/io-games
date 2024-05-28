@@ -2,7 +2,7 @@
 
 rem ----------------------------------------------------------------------------
 rem
-rem run_io_template_app_prod.bat: Process IO-TEMPLATE-APP tasks.
+rem run_io_games_prod.bat: Process IO-GAMES tasks.
 rem
 rem ----------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ set PYTHONPATH=.
 
 if ["%1"] EQU [""] (
     echo =======================================================================
-    echo version - Show the IO-TEMPLATE-APP version
+    echo version - Show the IO-GAMES version
     echo -----------------------------------------------------------------------
     set /P IO_AERO_TASK="Enter the desired task [default: %IO_AERO_TASK_DEFAULT%] "
 
@@ -41,7 +41,7 @@ if exist logging_io_aero.log (
 echo ===========================================================================
 echo Start %0
 echo ---------------------------------------------------------------------------
-echo IO_TEMPLATE_APP - Template for Application Repositories.
+echo IO_GAMES - Template for Application Repositories.
 echo ---------------------------------------------------------------------------
 echo ENV_FOR_DYNACONF         : %ENV_FOR_DYNACONF%
 echo PYTHONPATH               : %PYTHONPATH%
@@ -53,12 +53,12 @@ echo:| TIME
 echo ===========================================================================
 
 rem ----------------------------------------------------------------------------
-rem Show the IO_TEMPLATE_APP version.
+rem Show the IO_GAMES version.
 rem ----------------------------------------------------------------------------
 if /I ["%IO_AERO_TASK%"] EQU ["version"] (
-    dist\windows\iotemplateapp.exe -t "%IO_AERO_TASK%"
+    dist\windows\iogames.exe -t "%IO_AERO_TASK%"
     if ERRORLEVEL 1 (
-        echo Processing of the script run_io_template_app_prod was aborted
+        echo Processing of the script run_io_games_prod was aborted
         exit 1
     )
 
@@ -69,7 +69,7 @@ rem ----------------------------------------------------------------------------
 rem Program abort due to wrong input.
 rem ----------------------------------------------------------------------------
 
-echo Processing of the script run_io_template_app_prod is aborted: unknown task='%IO_AERO_TASK%'
+echo Processing of the script run_io_games_prod is aborted: unknown task='%IO_AERO_TASK%'
 exit 1
 
 :END_OF_SCRIPT

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-MODULE:=iotemplateapp
+MODULE:=iogames
 
 ifeq (${OS},Windows_NT)
     COPY_MYPY_STUBGEN=xcopy /y out\\${MODULE}\\*.* .\\${MODULE}\\
@@ -171,7 +171,7 @@ conda-dev:          ## Create a new environment for development.
 	@echo "Info **********  Start: Miniconda create development environment *****"
 	conda config --set always_yes true
 	conda --version
-	#echo "PYPI_PAT=${PYPI_PAT}"
+	@echo "PYPI_PAT=${PYPI_PAT}"
 	@echo "----------------------------------------------------------------------"
 	conda env remove -n ${MODULE}
 	conda env create -f environment_dev.yml
@@ -254,7 +254,7 @@ docker:             ## Create a docker image.
 	${DOCKER2EXE_MOVE} dist${PATH_SEP}${MODULE}-${DOCKER2EXE_DIR} app-${DOCKER2EXE_DIR}${PATH_SEP}${MODULE}${DOCKER2EXE_EXT}
 	${DOCKER2EXE_CHMOD}  app-${DOCKER2EXE_DIR}${PATH_SEP}${MODULE}
 	${DOCKER2EXE_COPY} logging_cfg.yaml                           app-${DOCKER2EXE_DIR}${PATH_SEP}
-	${DOCKER2EXE_COPY} run_iotemplateapp.${DOCKER2EXE_SCRIPT}     app-${DOCKER2EXE_DIR}${PATH_SEP}
+	${DOCKER2EXE_COPY} run_iogames.${DOCKER2EXE_SCRIPT}     app-${DOCKER2EXE_DIR}${PATH_SEP}
 	${DOCKER2EXE_CHMOD} app-${DOCKER2EXE_DIR}${PATH_SEP}*.${DOCKER2EXE_SCRIPT}
 	${DOCKER2EXE_COPY} settings.io_aero.toml                      app-${DOCKER2EXE_DIR}${PATH_SEP}
 	@echo "Info **********  End:   Docker ***************************************"

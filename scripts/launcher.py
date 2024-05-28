@@ -1,9 +1,9 @@
 # Copyright (c) 2022-2024 IO-Aero. All rights reserved. Use of this
 # source code is governed by the IO-Aero License, that can
 # be found in the LICENSE.md file.
-"""Module iotemplateapp: Entry Point Functionality.
+"""Module iogames: Entry Point Functionality.
 
-This is the entry point to the application IO-TEMPLATE-APP.
+This is the entry point to the application IO-GAMES.
 """
 
 import locale
@@ -16,7 +16,7 @@ import tomli
 from dynaconf import Dynaconf  # type: ignore
 from iocommon import io_glob, io_logger, io_utils
 
-from iotemplateapp import glob_local, templateapp
+from iogames import games, glob_local
 
 # -----------------------------------------------------------------------------
 # Global variables.
@@ -70,10 +70,10 @@ def _print_project_version() -> None:
 
     # Check if the version is found and print it
     if version:
-        logging.info("IO-TEMPLATE-APP version: %s", version)
+        logging.info("IO-GAMES version: %s", version)
     else:
         # If the version isn't found, print an appropriate message
-        logging.fatal("IO-TEMPLATE-APP version not found in pyproject.toml")
+        logging.fatal("IO-GAMES version not found in pyproject.toml")
 
 
 # -----------------------------------------------------------------------------
@@ -85,7 +85,6 @@ def main(argv: list[str]) -> None:
     The processes to be carried out are selected via command line arguments.
 
     Args:
-    ----
         argv (list[str]): Command line arguments.
 
     """
@@ -110,18 +109,18 @@ def main(argv: list[str]) -> None:
     logging.info("locale=%s", locale.getlocale())
 
     # Load the command line arguments.
-    templateapp.get_args()
+    games.get_args()
 
     # Print the configuration parameters.
     _print_dynaconf_settings()
 
     # Perform the processing
-    if templateapp.ARG_TASK == glob_local.ARG_TASK_VERSION:
+    if games.ARG_TASK == glob_local.ARG_TASK_VERSION:
         _print_project_version()
     else:
         io_utils.terminate_fatal(
             # FATAL.00.926 The task '{task}' is invalid
-            glob_local.FATAL_00_926.replace("{task}", templateapp.ARG_TASK),
+            glob_local.FATAL_00_926.replace("{task}", games.ARG_TASK),
         )
 
     io_utils.progress_msg("-" * 79)
