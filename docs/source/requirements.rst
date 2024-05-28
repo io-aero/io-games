@@ -37,7 +37,7 @@ The command-line shells supported are:
 For macOS and Ubuntu, the end-of-line character and the execution authorization may need to be adjusted for the shell scripts.
 If the ``dos2Unix`` program is installed, the necessary adjustments can be made using the scripts ``./scripts/run_prep_zsh_scripts.zsh`` (macOS) or ``./scripts/run_prep_bash_scripts.sh`` (Ubuntu).
 
-`Python <https://docs.python.org/3/whatsnew/3.11.html>`__\
+`Python <https://docs.python.org/3/whatsnew/3.12.html>`__\
 ----------------------------------------------------------
 
 This project utilizes Python from version 3.10, which introduced significant enhancements in type hinting and type annotations.
