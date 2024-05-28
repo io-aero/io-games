@@ -217,6 +217,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_io_games.html">Configuration IO-GAMES</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_logging.html">Configuration Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first_steps.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced_usage.html">Advanced Usage</a></li>
@@ -289,11 +290,12 @@
 <dt class="sig sig-object py" id="iogames.games.check_arg_task">
 <span class="sig-prename descclassname"><span class="pre">iogames.games.</span></span><span class="sig-name descname"><span class="pre">check_arg_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Namespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iogames.games.check_arg_task" title="Link to this definition">¶</a></dt>
 <dd><p>Check the command line argument: -t / –task.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – Command line arguments.</p>
-</dd>
-</dl>
+<section id="args">
+<h3>Args:<a class="headerlink" href="#args" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>args (argparse.Namespace): Command line arguments.</p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
@@ -306,36 +308,37 @@
 <dt class="sig sig-object py" id="iogames.games.progress_msg">
 <span class="sig-prename descclassname"><span class="pre">iogames.games.</span></span><span class="sig-name descname"><span class="pre">progress_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iogames.games.progress_msg" title="Link to this definition">¶</a></dt>
 <dd><p>Create a progress message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – Progress message.</p>
-</dd>
-</dl>
+<section id="id1">
+<h3>Args:<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>msg (str): Progress message.</p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iogames.games.progress_msg_time_elapsed">
 <span class="sig-prename descclassname"><span class="pre">iogames.games.</span></span><span class="sig-name descname"><span class="pre">progress_msg_time_elapsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iogames.games.progress_msg_time_elapsed" title="Link to this definition">¶</a></dt>
 <dd><p>Create a time elapsed message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>duration</strong> (<em>int</em>) – Time elapsed in ns.</p></li>
-<li><p><strong>event</strong> (<em>str</em>) – Event description.</p></li>
-</ul>
-</dd>
-</dl>
+<section id="id2">
+<h3>Args:<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>duration (int): Time elapsed in ns.
+event (str): Event description.</p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iogames.games.terminate_fatal">
 <span class="sig-prename descclassname"><span class="pre">iogames.games.</span></span><span class="sig-name descname"><span class="pre">terminate_fatal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iogames.games.terminate_fatal" title="Link to this definition">¶</a></dt>
 <dd><p>Terminate the application immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>error_msg</strong> (<em>str</em>) – Error message.</p>
-</dd>
-</dl>
+<section id="id3">
+<h3>Args:<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>error_msg (str): Error message.</p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">

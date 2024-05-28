@@ -27,6 +27,7 @@ def check_arg_task(args: argparse.Namespace) -> None:
     """Check the command line argument: -t / --task.
 
     Args:
+    ----
         args (argparse.Namespace): Command line arguments.
 
     """
@@ -111,6 +112,7 @@ def progress_msg(msg: str) -> None:
     """Create a progress message.
 
     Args:
+    ----
         msg (str): Progress message.
 
     """
@@ -125,6 +127,7 @@ def progress_msg_time_elapsed(duration: int, event: str) -> None:
     """Create a time elapsed message.
 
     Args:
+    ----
         duration (int): Time elapsed in ns.
         event (str): Event description.
 
@@ -139,6 +142,7 @@ def terminate_fatal(error_msg: str) -> None:
     """Terminate the application immediately.
 
     Args:
+    ----
         error_msg (str): Error message.
 
     """

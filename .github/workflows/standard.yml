@@ -154,7 +154,7 @@ jobs:
           conda init --all
           source ~/$SHELL_CONFIG
           conda activate $MODULE
-          make black lint tests
+          make black lint docs tests
 
       - name: Coveralls
         if: ${{ env.IO_COVERALLS == 'true' && runner.os == 'Linux' }}
