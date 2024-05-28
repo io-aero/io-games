@@ -49,6 +49,12 @@ jobs:
           sudo locale-gen en_US.UTF-8
           sudo update-locale LANG=en_US.UTF-8
 
+      - name: Preparing scripts - Ubuntu
+        run: |
+          sudo apt-get update && sudo apt-get install -y dos2unix
+          chmod +x scripts/run_prep_*.sh
+          dos2unix scripts/run_prep_*.sh
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
