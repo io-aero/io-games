@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="First Steps" href="first_steps.html" /><link rel="prev" title="Configuration IO-GAMES" href="configuration_io_games.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuration Logging" href="configuration_logging.html" /><link rel="prev" title="Installation" href="installation.html" />
 
     <link rel="shortcut icon" href="_static/IO-Aero_1_Favicon.ico"/><!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
-        <title>Configuration Logging - IO-GAMES 1-4-4 documentation</title>
+        <title>Configuration IO-GAMES - IO-GAMES 1-4-4 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -191,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -217,8 +217,8 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_io_games.html">Configuration IO-GAMES</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration Logging</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration IO-GAMES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_logging.html">Configuration Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first_steps.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced_usage.html">Advanced Usage</a></li>
 </ul>
@@ -261,43 +261,109 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="configuration-logging">
-<h1>Configuration Logging<a class="headerlink" href="#configuration-logging" title="Link to this heading">¶</a></h1>
-<p>In <strong>IO-GAMES</strong> the Python standard module for logging is used - details can be found <a class="reference external" href="https://docs.python.org/3/library/logging.config.html">here</a>.</p>
-<p>The file <code class="docutils literal notranslate"><span class="pre">logging_cfg.yaml</span></code> controls the logging behaviour of the application.</p>
-<p>Default content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
-
-<span class="n">disable_existing_loggers</span><span class="p">:</span> <span class="kc">False</span>
-
-<span class="n">formatters</span><span class="p">:</span>
-  <span class="n">simple</span><span class="p">:</span>
-    <span class="nb">format</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> [</span><span class="si">%(name)s</span><span class="s2">] [</span><span class="si">%(module)s</span><span class="s2">.py  ] </span><span class="si">%(levelname)-5s</span><span class="s2"> </span><span class="si">%(funcName)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
-  <span class="n">extended</span><span class="p">:</span>
-    <span class="nb">format</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> [</span><span class="si">%(name)s</span><span class="s2">] [</span><span class="si">%(module)s</span><span class="s2">.py  ] </span><span class="si">%(levelname)-5s</span><span class="s2"> </span><span class="si">%(funcName)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> </span><span class="se">\n</span><span class="si">%(message)s</span><span class="s2">&quot;</span>
-
-<span class="n">handlers</span><span class="p">:</span>
-  <span class="n">console</span><span class="p">:</span>
-    <span class="n">class</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span>
-    <span class="n">level</span><span class="p">:</span> <span class="n">INFO</span>
-    <span class="n">formatter</span><span class="p">:</span> <span class="n">simple</span>
-  <span class="n">file_handler</span><span class="p">:</span>
-    <span class="n">class</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span>
-    <span class="n">level</span><span class="p">:</span> <span class="n">INFO</span>
-    <span class="n">filename</span><span class="p">:</span> <span class="n">logging_io_aero</span><span class="o">.</span><span class="n">log</span>
-    <span class="n">formatter</span><span class="p">:</span> <span class="n">extended</span>
-
-<span class="n">root</span><span class="p">:</span>
-  <span class="n">level</span><span class="p">:</span> <span class="n">DEBUG</span>
-  <span class="n">handlers</span><span class="p">:</span> <span class="p">[</span> <span class="n">console</span><span class="p">,</span> <span class="n">file_handler</span> <span class="p">]</span>
+          <section id="configuration-io-games">
+<h1>Configuration IO-GAMES<a class="headerlink" href="#configuration-io-games" title="Link to this heading">¶</a></h1>
+<section id="act-secrets">
+<h2>.act_secrets<a class="headerlink" href="#act-secrets" title="Link to this heading">¶</a></h2>
+<p>This file controls the secrets of the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">action</span></code> functionality.
+This file is not included in the repository.
+The file <code class="docutils literal notranslate"><span class="pre">.act_secrets_template</span></code> can be used as a template.</p>
+<p>The customisable entries are:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GLOBAL_USER_EMAIL</p></td>
+<td><p>The global email address for GitHub</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Examples</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GLOBAL_USER_EMAIL</span><span class="o">=</span><span class="n">a</span><span class="nd">@b</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
+</section>
+<section id="settings-io-aero-toml">
+<h2>.settings.io_aero.toml<a class="headerlink" href="#settings-io-aero-toml" title="Link to this heading">¶</a></h2>
+<p>This file controls the secrets of the application.
+This file is not included in the repository.
+The file <code class="docutils literal notranslate"><span class="pre">.settings.io_aero_template.toml</span></code> can be used as a template.</p>
+<p>The customisable entries are:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>postgres_password</p></td>
+<td><p>Password of the database user</p></td>
+</tr>
+<tr class="row-odd"><td><p>postgres_password_admin</p></td>
+<td><p>Password of the database administrator</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The secrets can be set differently for the individual
+environments (<code class="docutils literal notranslate"><span class="pre">default</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code>).</p>
+<p><strong>Examples</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
+<span class="n">postgres_password</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+<span class="n">postgres_password_admin</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="p">[</span><span class="n">test</span><span class="p">]</span>
+<span class="n">postgres_password</span> <span class="o">=</span> <span class="s2">&quot;postgres_password&quot;</span>
+<span class="n">postgres_password_admin</span> <span class="o">=</span> <span class="s2">&quot;postgres_password_admin&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>settings.io_aero.toml<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>This file controls the behaviour of the application.</p>
+<p>The customisable entries are:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>check_value</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">default</span></code> for productive operation,
+<code class="docutils literal notranslate"><span class="pre">test</span></code> for test operation</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_verbose</p></td>
+<td><p>Display progress messages for processing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The configuration parameters can be set differently for the individual
+environments (<code class="docutils literal notranslate"><span class="pre">default</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code>).</p>
+<p><strong>Examples</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
+<span class="n">check_value</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+<span class="n">is_verbose</span> <span class="o">=</span> <span class="n">true</span>
+
+<span class="p">[</span><span class="n">test</span><span class="p">]</span>
+<span class="n">check_value</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -305,23 +371,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="first_steps.html">
+          <a class="next-page" href="configuration_logging.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">First Steps</div>
+                <div class="title">Configuration Logging</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="configuration_io_games.html">
+          <a class="prev-page" href="installation.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Configuration IO-GAMES</div>
+                <div class="title">Installation</div>
                 
               </div>
             </a>
@@ -343,8 +409,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Configuration IO-GAMES</a><ul>
+<li><a class="reference internal" href="#act-secrets">.act_secrets</a></li>
+<li><a class="reference internal" href="#settings-io-aero-toml">.settings.io_aero.toml</a></li>
+<li><a class="reference internal" href="#id1">settings.io_aero.toml</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

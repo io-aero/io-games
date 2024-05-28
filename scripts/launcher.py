@@ -85,6 +85,7 @@ def main(argv: list[str]) -> None:
     The processes to be carried out are selected via command line arguments.
 
     Args:
+    ----
         argv (list[str]): Command line arguments.
 
     """
