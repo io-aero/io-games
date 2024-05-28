@@ -1,0 +1,106 @@
+name: Standard
+
+on:
+  pull_request:
+    branches: ['main']
+
+env:
+  IO_AWS_CLI: 'false'
+  IO_COVERALLS: 'false'
+  MODULE: 'iogames'
+  PYPI_PAT: ${{ secrets.PYPI_PAT }}
+
+jobs:
+  standard:
+    name: OS ${{ matrix.os }} - Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.12"]
+
+    steps:
+      - name: Log the Operating System
+        run: |
+          echo "Running on OS: ${{ runner.os }}"
+
+      - name: Show the environment variables
+        run: |
+          echo "IO_AWS_CLI  = ${{ env.IO_AWS_CLI }}"
+          echo "IO_COVERALLS= ${{ env.IO_COVERALLS }}"
+          echo "IO_LOCAL    = ${{ vars.IO_LOCAL }}"
+          echo "MODULE      = ${{ env.MODULE }}"
+          echo "PYPI_PAT    = ${{ secrets.PYPI_PAT }}"
+
+      - name: Set Timezone
+        run: echo "TZ=UTC" >> $GITHUB_ENV
+
+      - name: Checking out the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # no history, just HEAD
+
+      - name: Set Locale - Ubuntu
+        run: |
+          echo "SHELL_CONFIG=.bashrc" >> $GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install -y locales
+          sudo locale-gen en_US.UTF-8
+          sudo update-locale LANG=en_US.UTF-8
+
+      - name: Preparing scripts - Ubuntu
+        run: |
+          sudo apt-get update && sudo apt-get install -y dos2unix
+          chmod +x scripts/run_prep_*.sh
+          dos2unix scripts/run_prep_*.sh
+          ./scripts/run_prep_bash_scripts.sh
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up AWS credentials
+        if: ${{ env.IO_AWS_CLI == 'true' }}
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Install AWS CLI - Ubuntu
+        if: ${{ env.IO_AWS_CLI == 'true' && vars.IO_LOCAL == 'true' && runner.os == 'Linux' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          miniconda-version: "latest"
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies - Conda - dev
+        run: make conda-dev
+
+      - name: Run pytest - dev
+        run: |
+          conda init --all
+          source ~/$SHELL_CONFIG
+          conda activate $MODULE
+          make black lint docs tests
+
+      - name: Coveralls
+        if: ${{ env.IO_COVERALLS == 'true' && runner.os == 'Linux' }}
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage.lcov
+          flag-name: run-${{ matrix.os }}-py${{ matrix.python-version }}
+          parallel: false
+          parallel-finished: true

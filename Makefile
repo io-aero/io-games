@@ -2,13 +2,25 @@
 
 MODULE:=iogames
 
-COPY_MYPY_STUBGEN=xcopy /y out\\${MODULE}\\*.* .\\${MODULE}\\
+ifeq (${OS},Windows_NT)
+    COPY_MYPY_STUBGEN=xcopy /y out\\${MODULE}\\*.* .\\${MODULE}\\
+    DELETE_MYPY_STUBGEN=if exist out rd /s /q out
+    PATH_SEP=\\
+    PIP=pip
+    PYTHON=python
+    DELETE_SPHINX=del /f /q ${SPHINX_BUILDDIR}\\*
+else
+	ARCH:=$(shell uname -m)
+	OS:=$(shell uname -s)
+    COPY_MYPY_STUBGEN=cp -f out/${MODULE}/* ./${MODULE}/
+    DELETE_MYPY_STUBGEN=rm -rf out
+    PATH_SEP=/
+    PIP=pip3
+    PYTHON=python3
+    DELETE_SPHINX=rm -rf ${SPHINX_BUILDDIR}/*
+endif
+
 COVERALLS_REPO_TOKEN=<see coveralls.io>
-DELETE_MYPY_STUBGEN=if exist out rd /s /q out
-DELETE_SPHINX=del /f /q ${SPHINX_BUILDDIR}\\*
-PATH_SEP=\\
-PIP=pip
-PYTHON=python
 PYTHONPATH=${MODULE} docs scripts tests
 SPHINX_BUILDDIR=docs${PATH_SEP}build
 SPHINX_SOURCEDIR=docs${PATH_SEP}source
@@ -64,6 +76,12 @@ action-std:         ## Run the GitHub Actions locally: standard.
         --verbose \
         -P ubuntu-latest=catthehacker/ubuntu:act-latest \
         -W .github/workflows/github_pages.yml
+	act --quiet \
+        --secret-file .act_secrets \
+        --var IO_LOCAL='true' \
+        --verbose \
+        -P ubuntu-latest=catthehacker/ubuntu:act-latest \
+        -W .github/workflows/standard.yml
 	@echo "Info **********  End:   action ***************************************"
 
 # Bandit is a tool designed to find common security issues in Python code.
