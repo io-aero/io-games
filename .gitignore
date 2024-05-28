@@ -9,12 +9,7 @@
 /.temp/
 /app-*
 /build/
-/data/*_postgres.zip
-/data/postgres/
-/data/postgres_test/
 /dist/iogames.exe
-/dist/linux/
-/dist/macos/
 /dist/windows/
 /docs/build/doctrees/
 /docs/build/pdf/.doctrees
