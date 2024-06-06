@@ -4,6 +4,7 @@ channels:
 dependencies:
   - python=3.12
   - nuitka
+  - numpy
   - pyyaml
   - scons
   - tomli
@@ -12,6 +13,8 @@ dependencies:
   - pip
   - pip:
     - git+https://IoAeroMachineUser:${PYPI_PAT}@github.com/io-aero/io-common.git
+    - pygame
+    - pgzero
     # Development dependencies
     - bandit
     - black
