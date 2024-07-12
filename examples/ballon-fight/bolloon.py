@@ -21,13 +21,31 @@ number_of_updates = 0
 
 scores = []
 
-def update_high_scores():\
+def update_high_scores():
     global score, scores
-    filename = r"c:/Users/John%20Paul/io-games/examples/ballon-fight/high-scores.txt"
+    filename = r"examples/ballon-fight/high-scores.txt"
+    scores = []
+    with open(filename, "r") as file:
+        line = file.readline()
+        high_scores = line.split
+        for high_score in high_scores:
+            if(score > int(high_score)):
+                scores.append(str(score) + " ")
+                score = int(high_score)
+            else:
+                scores.append(str(high_score) + " ")
+    with open(filename, "w") as file:
+        for high_score in scores:
+            file.write(high_score)
 
 def display_high_scores():
-    pass
-
+    screen.draw.text("HIGH SCORES", (350, 150), color="black")
+    y = 175
+    position = 1
+    for high_score in scores:
+        screen.draw.text(str(position) + ". " + high_score, (350, y), color="black")
+        y += 25
+        postion += 1
 def draw():
     screen.blit("background", (0, 0))
     if not game_over:
